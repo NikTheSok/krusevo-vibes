@@ -9,7 +9,7 @@ import { useI18n } from "@/lib/i18n";
 import { MAIN_NAV } from "@/lib/nav";
 import { cn } from "@/lib/utils";
 
-export function Navbar() {
+export function Navbar({ overlay = false }: { overlay?: boolean }) {
   const { t } = useI18n();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -32,7 +32,9 @@ export function Navbar() {
     <header
       className={cn(
         "sticky top-0 z-50 transition-colors duration-300",
-        scrolled || open ? "bg-ink/95 backdrop-blur supports-[backdrop-filter]:bg-ink/80" : "bg-transparent",
+        !overlay || scrolled || open
+          ? "bg-ink/95 backdrop-blur supports-[backdrop-filter]:bg-ink/80"
+          : "bg-transparent",
       )}
     >
       <Container size="wide" as="nav" aria-label={t("nav.menu")}>
