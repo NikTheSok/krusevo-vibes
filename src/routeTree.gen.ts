@@ -10,33 +10,53 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ActivitiesRouteImport } from './routes/activities'
+import { Route as ProgramRouteImport } from './routes/program'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ActivitiesRoute = ActivitiesRouteImport.update({
+  id: '/activities',
+  path: '/activities',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProgramRoute = ProgramRouteImport.update({
+  id: '/program',
+  path: '/program',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/activities': typeof ActivitiesRoute
+  '/program': typeof ProgramRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/activities': typeof ActivitiesRoute
+  '/program': typeof ProgramRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/activities': typeof ActivitiesRoute
+  '/program': typeof ProgramRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/activities' | '/program'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/activities' | '/program'
+  id: '__root__' | '/' | '/activities' | '/program'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ActivitiesRoute: typeof ActivitiesRoute
+  ProgramRoute: typeof ProgramRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +68,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/activities': {
+      id: '/activities'
+      path: '/activities'
+      fullPath: '/activities'
+      preLoaderRoute: typeof ActivitiesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/program': {
+      id: '/program'
+      path: '/program'
+      fullPath: '/program'
+      preLoaderRoute: typeof ProgramRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ActivitiesRoute: ActivitiesRoute,
+  ProgramRoute: ProgramRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
