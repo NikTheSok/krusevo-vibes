@@ -13,10 +13,14 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as ActivitiesRouteImport } from './routes/activities'
 import { Route as ArtistsRouteImport } from './routes/artists'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as CookiesRouteImport } from './routes/cookies'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as GalleryRouteImport } from './routes/gallery'
 import { Route as LocationsRouteImport } from './routes/locations'
+import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as ProgramRouteImport } from './routes/program'
+import { Route as TermsRouteImport } from './routes/terms'
 import { Route as TicketsRouteImport } from './routes/tickets'
 
 const IndexRoute = IndexRouteImport.update({
@@ -39,6 +43,16 @@ const ArtistsRoute = ArtistsRouteImport.update({
   path: '/artists',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CookiesRoute = CookiesRouteImport.update({
+  id: '/cookies',
+  path: '/cookies',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const FaqRoute = FaqRouteImport.update({
   id: '/faq',
   path: '/faq',
@@ -54,9 +68,19 @@ const LocationsRoute = LocationsRouteImport.update({
   path: '/locations',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProgramRoute = ProgramRouteImport.update({
   id: '/program',
   path: '/program',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TicketsRoute = TicketsRouteImport.update({
@@ -70,10 +94,14 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/activities': typeof ActivitiesRoute
   '/artists': typeof ArtistsRoute
+  '/contact': typeof ContactRoute
+  '/cookies': typeof CookiesRoute
   '/faq': typeof FaqRoute
   '/gallery': typeof GalleryRoute
   '/locations': typeof LocationsRoute
+  '/privacy': typeof PrivacyRoute
   '/program': typeof ProgramRoute
+  '/terms': typeof TermsRoute
   '/tickets': typeof TicketsRoute
 }
 export interface FileRoutesByTo {
@@ -81,10 +109,14 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/activities': typeof ActivitiesRoute
   '/artists': typeof ArtistsRoute
+  '/contact': typeof ContactRoute
+  '/cookies': typeof CookiesRoute
   '/faq': typeof FaqRoute
   '/gallery': typeof GalleryRoute
   '/locations': typeof LocationsRoute
+  '/privacy': typeof PrivacyRoute
   '/program': typeof ProgramRoute
+  '/terms': typeof TermsRoute
   '/tickets': typeof TicketsRoute
 }
 export interface FileRoutesById {
@@ -93,10 +125,14 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/activities': typeof ActivitiesRoute
   '/artists': typeof ArtistsRoute
+  '/contact': typeof ContactRoute
+  '/cookies': typeof CookiesRoute
   '/faq': typeof FaqRoute
   '/gallery': typeof GalleryRoute
   '/locations': typeof LocationsRoute
+  '/privacy': typeof PrivacyRoute
   '/program': typeof ProgramRoute
+  '/terms': typeof TermsRoute
   '/tickets': typeof TicketsRoute
 }
 export interface FileRouteTypes {
@@ -106,10 +142,14 @@ export interface FileRouteTypes {
     | '/about'
     | '/activities'
     | '/artists'
+    | '/contact'
+    | '/cookies'
     | '/faq'
     | '/gallery'
     | '/locations'
+    | '/privacy'
     | '/program'
+    | '/terms'
     | '/tickets'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -117,10 +157,14 @@ export interface FileRouteTypes {
     | '/about'
     | '/activities'
     | '/artists'
+    | '/contact'
+    | '/cookies'
     | '/faq'
     | '/gallery'
     | '/locations'
+    | '/privacy'
     | '/program'
+    | '/terms'
     | '/tickets'
   id:
     | '__root__'
@@ -128,10 +172,14 @@ export interface FileRouteTypes {
     | '/about'
     | '/activities'
     | '/artists'
+    | '/contact'
+    | '/cookies'
     | '/faq'
     | '/gallery'
     | '/locations'
+    | '/privacy'
     | '/program'
+    | '/terms'
     | '/tickets'
   fileRoutesById: FileRoutesById
 }
@@ -140,10 +188,14 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   ActivitiesRoute: typeof ActivitiesRoute
   ArtistsRoute: typeof ArtistsRoute
+  ContactRoute: typeof ContactRoute
+  CookiesRoute: typeof CookiesRoute
   FaqRoute: typeof FaqRoute
   GalleryRoute: typeof GalleryRoute
   LocationsRoute: typeof LocationsRoute
+  PrivacyRoute: typeof PrivacyRoute
   ProgramRoute: typeof ProgramRoute
+  TermsRoute: typeof TermsRoute
   TicketsRoute: typeof TicketsRoute
 }
 
@@ -177,6 +229,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ArtistsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cookies': {
+      id: '/cookies'
+      path: '/cookies'
+      fullPath: '/cookies'
+      preLoaderRoute: typeof CookiesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/faq': {
       id: '/faq'
       path: '/faq'
@@ -198,11 +264,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LocationsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/program': {
       id: '/program'
       path: '/program'
       fullPath: '/program'
       preLoaderRoute: typeof ProgramRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/tickets': {
@@ -220,10 +300,14 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   ActivitiesRoute: ActivitiesRoute,
   ArtistsRoute: ArtistsRoute,
+  ContactRoute: ContactRoute,
+  CookiesRoute: CookiesRoute,
   FaqRoute: FaqRoute,
   GalleryRoute: GalleryRoute,
   LocationsRoute: LocationsRoute,
+  PrivacyRoute: PrivacyRoute,
   ProgramRoute: ProgramRoute,
+  TermsRoute: TermsRoute,
   TicketsRoute: TicketsRoute,
 }
 export const routeTree = rootRouteImport
