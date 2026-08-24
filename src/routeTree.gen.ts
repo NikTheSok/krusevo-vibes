@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as ActivitiesRouteImport } from './routes/activities'
 import { Route as ArtistsRouteImport } from './routes/artists'
+import { Route as GalleryRouteImport } from './routes/gallery'
 import { Route as ProgramRouteImport } from './routes/program'
 
 const IndexRoute = IndexRouteImport.update({
@@ -35,6 +36,11 @@ const ArtistsRoute = ArtistsRouteImport.update({
   path: '/artists',
   getParentRoute: () => rootRouteImport,
 } as any)
+const GalleryRoute = GalleryRouteImport.update({
+  id: '/gallery',
+  path: '/gallery',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProgramRoute = ProgramRouteImport.update({
   id: '/program',
   path: '/program',
@@ -46,6 +52,7 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/activities': typeof ActivitiesRoute
   '/artists': typeof ArtistsRoute
+  '/gallery': typeof GalleryRoute
   '/program': typeof ProgramRoute
 }
 export interface FileRoutesByTo {
@@ -53,6 +60,7 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/activities': typeof ActivitiesRoute
   '/artists': typeof ArtistsRoute
+  '/gallery': typeof GalleryRoute
   '/program': typeof ProgramRoute
 }
 export interface FileRoutesById {
@@ -61,14 +69,23 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/activities': typeof ActivitiesRoute
   '/artists': typeof ArtistsRoute
+  '/gallery': typeof GalleryRoute
   '/program': typeof ProgramRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/activities' | '/artists' | '/program'
+  fullPaths:
+    '/' | '/about' | '/activities' | '/artists' | '/gallery' | '/program'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/activities' | '/artists' | '/program'
-  id: '__root__' | '/' | '/about' | '/activities' | '/artists' | '/program'
+  to: '/' | '/about' | '/activities' | '/artists' | '/gallery' | '/program'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/activities'
+    | '/artists'
+    | '/gallery'
+    | '/program'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -76,6 +93,7 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   ActivitiesRoute: typeof ActivitiesRoute
   ArtistsRoute: typeof ArtistsRoute
+  GalleryRoute: typeof GalleryRoute
   ProgramRoute: typeof ProgramRoute
 }
 
@@ -109,6 +127,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ArtistsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/gallery': {
+      id: '/gallery'
+      path: '/gallery'
+      fullPath: '/gallery'
+      preLoaderRoute: typeof GalleryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/program': {
       id: '/program'
       path: '/program'
@@ -124,6 +149,7 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   ActivitiesRoute: ActivitiesRoute,
   ArtistsRoute: ArtistsRoute,
+  GalleryRoute: GalleryRoute,
   ProgramRoute: ProgramRoute,
 }
 export const routeTree = rootRouteImport
