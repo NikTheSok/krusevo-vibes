@@ -6,7 +6,6 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { supabase } from "@/integrations/supabase/client";
-import { lovable } from "@/integrations/lovable";
 import { useI18n } from "@/lib/i18n";
 
 export const Route = createFileRoute("/admin/login")({
@@ -44,17 +43,6 @@ function AdminLoginPage() {
     await navigate({ to: "/admin/dashboard" });
   }
 
-  async function signInWithGoogle() {
-    setError(null);
-    try {
-      await lovable.auth.signInWithOAuth("google", {
-        redirect_uri: `${window.location.origin}/admin/login`,
-      });
-    } catch {
-      setError(t("admin.login.error"));
-    }
-  }
-
   return (
     <div className="surface-ink flex min-h-screen items-center">
       <Container size="narrow">
@@ -86,10 +74,6 @@ function AdminLoginPage() {
               {pending ? t("form.sending") : t("admin.login.submit")}
             </Button>
           </form>
-
-          <Button variant="outline" className="mt-3 w-full" onClick={signInWithGoogle}>
-            {t("admin.login.google")}
-          </Button>
         </div>
       </Container>
     </div>
