@@ -5,6 +5,7 @@ import { AdminShell } from "@/components/admin/AdminShell";
 import { StatusBadge } from "@/components/admin/StatusBadge";
 import { Button } from "@/components/ui/button";
 import { adminOverviewQuery } from "@/lib/content/admin-queries";
+import type { AdminOverview } from "@/lib/content/admin.functions";
 import { formatDateTime } from "@/lib/format";
 import { useI18n, type TranslationKey } from "@/lib/i18n";
 
@@ -19,7 +20,7 @@ export const Route = createFileRoute("/admin/_gate/dashboard")({
   component: AdminDashboard,
 });
 
-const COUNTS: { key: keyof ReturnType<typeof countKeys>; labelKey: TranslationKey }[] = [
+const COUNTS: { key: keyof AdminOverview["counts"]; labelKey: TranslationKey }[] = [
   { key: "events", labelKey: "admin.nav.program" },
   { key: "activities", labelKey: "admin.nav.activities" },
   { key: "artists", labelKey: "admin.nav.artists" },
@@ -29,20 +30,6 @@ const COUNTS: { key: keyof ReturnType<typeof countKeys>; labelKey: TranslationKe
   { key: "messages", labelKey: "admin.nav.messages" },
   { key: "subscribers", labelKey: "admin.nav.subscribers" },
 ];
-
-function countKeys() {
-  return {
-    events: 0,
-    activities: 0,
-    artists: 0,
-    gallery: 0,
-    locations: 0,
-    tickets: 0,
-    messages: 0,
-    newMessages: 0,
-    subscribers: 0,
-  };
-}
 
 function AdminDashboard() {
   const { t, locale, pick } = useI18n();

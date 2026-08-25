@@ -25,6 +25,7 @@ import { Route as TicketsRouteImport } from './routes/tickets'
 import { Route as AdminIndexRouteImport } from './routes/admin/index'
 import { Route as AdminGateRouteImport } from './routes/admin/_gate'
 import { Route as AdminLoginRouteImport } from './routes/admin/login'
+import { Route as AdminGateDashboardRouteImport } from './routes/admin/_gate/dashboard'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -106,6 +107,11 @@ const AdminLoginRoute = AdminLoginRouteImport.update({
   path: '/admin/login',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminGateDashboardRoute = AdminGateDashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => AdminGateRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -121,9 +127,10 @@ export interface FileRoutesByFullPath {
   '/program': typeof ProgramRoute
   '/terms': typeof TermsRoute
   '/tickets': typeof TicketsRoute
-  '/admin': typeof AdminGateRoute
+  '/admin': typeof AdminGateRouteWithChildren
   '/admin/login': typeof AdminLoginRoute
   '/admin/': typeof AdminIndexRoute
+  '/admin/dashboard': typeof AdminGateDashboardRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -141,6 +148,7 @@ export interface FileRoutesByTo {
   '/tickets': typeof TicketsRoute
   '/admin': typeof AdminIndexRoute
   '/admin/login': typeof AdminLoginRoute
+  '/admin/dashboard': typeof AdminGateDashboardRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -157,9 +165,10 @@ export interface FileRoutesById {
   '/program': typeof ProgramRoute
   '/terms': typeof TermsRoute
   '/tickets': typeof TicketsRoute
-  '/admin/_gate': typeof AdminGateRoute
+  '/admin/_gate': typeof AdminGateRouteWithChildren
   '/admin/login': typeof AdminLoginRoute
   '/admin/': typeof AdminIndexRoute
+  '/admin/_gate/dashboard': typeof AdminGateDashboardRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -180,6 +189,7 @@ export interface FileRouteTypes {
     | '/admin'
     | '/admin/login'
     | '/admin/'
+    | '/admin/dashboard'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -197,6 +207,7 @@ export interface FileRouteTypes {
     | '/tickets'
     | '/admin'
     | '/admin/login'
+    | '/admin/dashboard'
   id:
     | '__root__'
     | '/'
@@ -215,6 +226,7 @@ export interface FileRouteTypes {
     | '/admin/_gate'
     | '/admin/login'
     | '/admin/'
+    | '/admin/_gate/dashboard'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -231,7 +243,7 @@ export interface RootRouteChildren {
   ProgramRoute: typeof ProgramRoute
   TermsRoute: typeof TermsRoute
   TicketsRoute: typeof TicketsRoute
-  AdminGateRoute: typeof AdminGateRoute
+  AdminGateRoute: typeof AdminGateRouteWithChildren
   AdminLoginRoute: typeof AdminLoginRoute
   AdminIndexRoute: typeof AdminIndexRoute
 }
@@ -350,8 +362,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminLoginRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/_gate/dashboard': {
+      id: '/admin/_gate/dashboard'
+      path: '/dashboard'
+      fullPath: '/admin/dashboard'
+      preLoaderRoute: typeof AdminGateDashboardRouteImport
+      parentRoute: typeof AdminGateRoute
+    }
   }
 }
+
+interface AdminGateRouteChildren {
+  AdminGateDashboardRoute: typeof AdminGateDashboardRoute
+}
+
+const AdminGateRouteChildren: AdminGateRouteChildren = {
+  AdminGateDashboardRoute: AdminGateDashboardRoute,
+}
+
+const AdminGateRouteWithChildren = AdminGateRoute._addFileChildren(
+  AdminGateRouteChildren,
+)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
@@ -367,7 +398,7 @@ const rootRouteChildren: RootRouteChildren = {
   ProgramRoute: ProgramRoute,
   TermsRoute: TermsRoute,
   TicketsRoute: TicketsRoute,
-  AdminGateRoute: AdminGateRoute,
+  AdminGateRoute: AdminGateRouteWithChildren,
   AdminLoginRoute: AdminLoginRoute,
   AdminIndexRoute: AdminIndexRoute,
 }
