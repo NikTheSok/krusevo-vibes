@@ -22,6 +22,9 @@ import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as ProgramRouteImport } from './routes/program'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as TicketsRouteImport } from './routes/tickets'
+import { Route as AdminIndexRouteImport } from './routes/admin/index'
+import { Route as AdminGateRouteImport } from './routes/admin/_gate'
+import { Route as AdminLoginRouteImport } from './routes/admin/login'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -88,6 +91,21 @@ const TicketsRoute = TicketsRouteImport.update({
   path: '/tickets',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminIndexRoute = AdminIndexRouteImport.update({
+  id: '/admin/',
+  path: '/admin/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminGateRoute = AdminGateRouteImport.update({
+  id: '/admin/_gate',
+  path: '/admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminLoginRoute = AdminLoginRouteImport.update({
+  id: '/admin/login',
+  path: '/admin/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -103,6 +121,9 @@ export interface FileRoutesByFullPath {
   '/program': typeof ProgramRoute
   '/terms': typeof TermsRoute
   '/tickets': typeof TicketsRoute
+  '/admin': typeof AdminGateRoute
+  '/admin/login': typeof AdminLoginRoute
+  '/admin/': typeof AdminIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -118,6 +139,8 @@ export interface FileRoutesByTo {
   '/program': typeof ProgramRoute
   '/terms': typeof TermsRoute
   '/tickets': typeof TicketsRoute
+  '/admin': typeof AdminIndexRoute
+  '/admin/login': typeof AdminLoginRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -134,6 +157,9 @@ export interface FileRoutesById {
   '/program': typeof ProgramRoute
   '/terms': typeof TermsRoute
   '/tickets': typeof TicketsRoute
+  '/admin/_gate': typeof AdminGateRoute
+  '/admin/login': typeof AdminLoginRoute
+  '/admin/': typeof AdminIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -151,6 +177,9 @@ export interface FileRouteTypes {
     | '/program'
     | '/terms'
     | '/tickets'
+    | '/admin'
+    | '/admin/login'
+    | '/admin/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -166,6 +195,8 @@ export interface FileRouteTypes {
     | '/program'
     | '/terms'
     | '/tickets'
+    | '/admin'
+    | '/admin/login'
   id:
     | '__root__'
     | '/'
@@ -181,6 +212,9 @@ export interface FileRouteTypes {
     | '/program'
     | '/terms'
     | '/tickets'
+    | '/admin/_gate'
+    | '/admin/login'
+    | '/admin/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -197,6 +231,9 @@ export interface RootRouteChildren {
   ProgramRoute: typeof ProgramRoute
   TermsRoute: typeof TermsRoute
   TicketsRoute: typeof TicketsRoute
+  AdminGateRoute: typeof AdminGateRoute
+  AdminLoginRoute: typeof AdminLoginRoute
+  AdminIndexRoute: typeof AdminIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -292,6 +329,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TicketsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/': {
+      id: '/admin/'
+      path: '/admin'
+      fullPath: '/admin/'
+      preLoaderRoute: typeof AdminIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/_gate': {
+      id: '/admin/_gate'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminGateRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/login': {
+      id: '/admin/login'
+      path: '/admin/login'
+      fullPath: '/admin/login'
+      preLoaderRoute: typeof AdminLoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -309,6 +367,9 @@ const rootRouteChildren: RootRouteChildren = {
   ProgramRoute: ProgramRoute,
   TermsRoute: TermsRoute,
   TicketsRoute: TicketsRoute,
+  AdminGateRoute: AdminGateRoute,
+  AdminLoginRoute: AdminLoginRoute,
+  AdminIndexRoute: AdminIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
