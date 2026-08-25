@@ -5,7 +5,12 @@ import { Button } from "@/components/ui/button";
 import { useI18n } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
 
-type StateProps = { title?: string; description?: string; className?: string; action?: ReactNode };
+type StateProps = {
+  title?: string | undefined;
+  description?: string | undefined;
+  className?: string | undefined;
+  action?: ReactNode | undefined;
+};
 
 function StateShell({
   icon,
