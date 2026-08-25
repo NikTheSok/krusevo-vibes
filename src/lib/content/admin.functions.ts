@@ -193,11 +193,16 @@ export const listAdminSubscribers = createServerFn({ method: "GET" })
 
 export const getAdminSettings = createServerFn({ method: "GET" })
   .middleware([requireSupabaseAuth])
-  .handler(async ({ context }): Promise<{ key: string; value: unknown; is_public: boolean }[]> => {
+  .handler(async ({ context }): Promise<{ key: string; value: string; is_public: boolean }[]> => {
     const { data, error } = await context.supabase
       .from("site_settings")
       .select("key, value, is_public")
       .order("key", { ascending: true });
     if (error) throw new Error(error.message);
-    return data ?? [];
+    // JSON values are serialized as strings so they cross the RPC boundary safely.
+    return (data ?? []).map((row) => ({
+      key: row.key,
+      value: JSON.stringify(row.value, null, 2),
+      is_public: row.is_public,
+    }));
   });

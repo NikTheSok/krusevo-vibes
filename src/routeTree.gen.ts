@@ -22,6 +22,16 @@ import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as ProgramRouteImport } from './routes/program'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as TicketsRouteImport } from './routes/tickets'
+import { Route as AdminIndexRouteImport } from './routes/admin/index'
+import { Route as AdminGateRouteImport } from './routes/admin/_gate'
+import { Route as AdminLoginRouteImport } from './routes/admin/login'
+import { Route as AdminGateActivitiesRouteImport } from './routes/admin/_gate/activities'
+import { Route as AdminGateArtistsRouteImport } from './routes/admin/_gate/artists'
+import { Route as AdminGateDashboardRouteImport } from './routes/admin/_gate/dashboard'
+import { Route as AdminGateGalleryRouteImport } from './routes/admin/_gate/gallery'
+import { Route as AdminGateLocationsRouteImport } from './routes/admin/_gate/locations'
+import { Route as AdminGateProgramRouteImport } from './routes/admin/_gate/program'
+import { Route as AdminGateTicketsRouteImport } from './routes/admin/_gate/tickets'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -88,6 +98,56 @@ const TicketsRoute = TicketsRouteImport.update({
   path: '/tickets',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminIndexRoute = AdminIndexRouteImport.update({
+  id: '/admin/',
+  path: '/admin/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminGateRoute = AdminGateRouteImport.update({
+  id: '/admin/_gate',
+  path: '/admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminLoginRoute = AdminLoginRouteImport.update({
+  id: '/admin/login',
+  path: '/admin/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminGateActivitiesRoute = AdminGateActivitiesRouteImport.update({
+  id: '/activities',
+  path: '/activities',
+  getParentRoute: () => AdminGateRoute,
+} as any)
+const AdminGateArtistsRoute = AdminGateArtistsRouteImport.update({
+  id: '/artists',
+  path: '/artists',
+  getParentRoute: () => AdminGateRoute,
+} as any)
+const AdminGateDashboardRoute = AdminGateDashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => AdminGateRoute,
+} as any)
+const AdminGateGalleryRoute = AdminGateGalleryRouteImport.update({
+  id: '/gallery',
+  path: '/gallery',
+  getParentRoute: () => AdminGateRoute,
+} as any)
+const AdminGateLocationsRoute = AdminGateLocationsRouteImport.update({
+  id: '/locations',
+  path: '/locations',
+  getParentRoute: () => AdminGateRoute,
+} as any)
+const AdminGateProgramRoute = AdminGateProgramRouteImport.update({
+  id: '/program',
+  path: '/program',
+  getParentRoute: () => AdminGateRoute,
+} as any)
+const AdminGateTicketsRoute = AdminGateTicketsRouteImport.update({
+  id: '/tickets',
+  path: '/tickets',
+  getParentRoute: () => AdminGateRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -103,6 +163,16 @@ export interface FileRoutesByFullPath {
   '/program': typeof ProgramRoute
   '/terms': typeof TermsRoute
   '/tickets': typeof TicketsRoute
+  '/admin': typeof AdminGateRouteWithChildren
+  '/admin/login': typeof AdminLoginRoute
+  '/admin/': typeof AdminIndexRoute
+  '/admin/activities': typeof AdminGateActivitiesRoute
+  '/admin/artists': typeof AdminGateArtistsRoute
+  '/admin/dashboard': typeof AdminGateDashboardRoute
+  '/admin/gallery': typeof AdminGateGalleryRoute
+  '/admin/locations': typeof AdminGateLocationsRoute
+  '/admin/program': typeof AdminGateProgramRoute
+  '/admin/tickets': typeof AdminGateTicketsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -118,6 +188,15 @@ export interface FileRoutesByTo {
   '/program': typeof ProgramRoute
   '/terms': typeof TermsRoute
   '/tickets': typeof TicketsRoute
+  '/admin': typeof AdminIndexRoute
+  '/admin/login': typeof AdminLoginRoute
+  '/admin/activities': typeof AdminGateActivitiesRoute
+  '/admin/artists': typeof AdminGateArtistsRoute
+  '/admin/dashboard': typeof AdminGateDashboardRoute
+  '/admin/gallery': typeof AdminGateGalleryRoute
+  '/admin/locations': typeof AdminGateLocationsRoute
+  '/admin/program': typeof AdminGateProgramRoute
+  '/admin/tickets': typeof AdminGateTicketsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -134,6 +213,16 @@ export interface FileRoutesById {
   '/program': typeof ProgramRoute
   '/terms': typeof TermsRoute
   '/tickets': typeof TicketsRoute
+  '/admin/_gate': typeof AdminGateRouteWithChildren
+  '/admin/login': typeof AdminLoginRoute
+  '/admin/': typeof AdminIndexRoute
+  '/admin/_gate/activities': typeof AdminGateActivitiesRoute
+  '/admin/_gate/artists': typeof AdminGateArtistsRoute
+  '/admin/_gate/dashboard': typeof AdminGateDashboardRoute
+  '/admin/_gate/gallery': typeof AdminGateGalleryRoute
+  '/admin/_gate/locations': typeof AdminGateLocationsRoute
+  '/admin/_gate/program': typeof AdminGateProgramRoute
+  '/admin/_gate/tickets': typeof AdminGateTicketsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -151,6 +240,16 @@ export interface FileRouteTypes {
     | '/program'
     | '/terms'
     | '/tickets'
+    | '/admin'
+    | '/admin/login'
+    | '/admin/'
+    | '/admin/activities'
+    | '/admin/artists'
+    | '/admin/dashboard'
+    | '/admin/gallery'
+    | '/admin/locations'
+    | '/admin/program'
+    | '/admin/tickets'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -166,6 +265,15 @@ export interface FileRouteTypes {
     | '/program'
     | '/terms'
     | '/tickets'
+    | '/admin'
+    | '/admin/login'
+    | '/admin/activities'
+    | '/admin/artists'
+    | '/admin/dashboard'
+    | '/admin/gallery'
+    | '/admin/locations'
+    | '/admin/program'
+    | '/admin/tickets'
   id:
     | '__root__'
     | '/'
@@ -181,6 +289,16 @@ export interface FileRouteTypes {
     | '/program'
     | '/terms'
     | '/tickets'
+    | '/admin/_gate'
+    | '/admin/login'
+    | '/admin/'
+    | '/admin/_gate/activities'
+    | '/admin/_gate/artists'
+    | '/admin/_gate/dashboard'
+    | '/admin/_gate/gallery'
+    | '/admin/_gate/locations'
+    | '/admin/_gate/program'
+    | '/admin/_gate/tickets'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -197,6 +315,9 @@ export interface RootRouteChildren {
   ProgramRoute: typeof ProgramRoute
   TermsRoute: typeof TermsRoute
   TicketsRoute: typeof TicketsRoute
+  AdminGateRoute: typeof AdminGateRouteWithChildren
+  AdminLoginRoute: typeof AdminLoginRoute
+  AdminIndexRoute: typeof AdminIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -292,8 +413,102 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TicketsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/': {
+      id: '/admin/'
+      path: '/admin'
+      fullPath: '/admin/'
+      preLoaderRoute: typeof AdminIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/_gate': {
+      id: '/admin/_gate'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminGateRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/login': {
+      id: '/admin/login'
+      path: '/admin/login'
+      fullPath: '/admin/login'
+      preLoaderRoute: typeof AdminLoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/_gate/activities': {
+      id: '/admin/_gate/activities'
+      path: '/activities'
+      fullPath: '/admin/activities'
+      preLoaderRoute: typeof AdminGateActivitiesRouteImport
+      parentRoute: typeof AdminGateRoute
+    }
+    '/admin/_gate/artists': {
+      id: '/admin/_gate/artists'
+      path: '/artists'
+      fullPath: '/admin/artists'
+      preLoaderRoute: typeof AdminGateArtistsRouteImport
+      parentRoute: typeof AdminGateRoute
+    }
+    '/admin/_gate/dashboard': {
+      id: '/admin/_gate/dashboard'
+      path: '/dashboard'
+      fullPath: '/admin/dashboard'
+      preLoaderRoute: typeof AdminGateDashboardRouteImport
+      parentRoute: typeof AdminGateRoute
+    }
+    '/admin/_gate/gallery': {
+      id: '/admin/_gate/gallery'
+      path: '/gallery'
+      fullPath: '/admin/gallery'
+      preLoaderRoute: typeof AdminGateGalleryRouteImport
+      parentRoute: typeof AdminGateRoute
+    }
+    '/admin/_gate/locations': {
+      id: '/admin/_gate/locations'
+      path: '/locations'
+      fullPath: '/admin/locations'
+      preLoaderRoute: typeof AdminGateLocationsRouteImport
+      parentRoute: typeof AdminGateRoute
+    }
+    '/admin/_gate/program': {
+      id: '/admin/_gate/program'
+      path: '/program'
+      fullPath: '/admin/program'
+      preLoaderRoute: typeof AdminGateProgramRouteImport
+      parentRoute: typeof AdminGateRoute
+    }
+    '/admin/_gate/tickets': {
+      id: '/admin/_gate/tickets'
+      path: '/tickets'
+      fullPath: '/admin/tickets'
+      preLoaderRoute: typeof AdminGateTicketsRouteImport
+      parentRoute: typeof AdminGateRoute
+    }
   }
 }
+
+interface AdminGateRouteChildren {
+  AdminGateActivitiesRoute: typeof AdminGateActivitiesRoute
+  AdminGateArtistsRoute: typeof AdminGateArtistsRoute
+  AdminGateDashboardRoute: typeof AdminGateDashboardRoute
+  AdminGateGalleryRoute: typeof AdminGateGalleryRoute
+  AdminGateLocationsRoute: typeof AdminGateLocationsRoute
+  AdminGateProgramRoute: typeof AdminGateProgramRoute
+  AdminGateTicketsRoute: typeof AdminGateTicketsRoute
+}
+
+const AdminGateRouteChildren: AdminGateRouteChildren = {
+  AdminGateActivitiesRoute: AdminGateActivitiesRoute,
+  AdminGateArtistsRoute: AdminGateArtistsRoute,
+  AdminGateDashboardRoute: AdminGateDashboardRoute,
+  AdminGateGalleryRoute: AdminGateGalleryRoute,
+  AdminGateLocationsRoute: AdminGateLocationsRoute,
+  AdminGateProgramRoute: AdminGateProgramRoute,
+  AdminGateTicketsRoute: AdminGateTicketsRoute,
+}
+
+const AdminGateRouteWithChildren = AdminGateRoute._addFileChildren(
+  AdminGateRouteChildren,
+)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
@@ -309,6 +524,9 @@ const rootRouteChildren: RootRouteChildren = {
   ProgramRoute: ProgramRoute,
   TermsRoute: TermsRoute,
   TicketsRoute: TicketsRoute,
+  AdminGateRoute: AdminGateRouteWithChildren,
+  AdminLoginRoute: AdminLoginRoute,
+  AdminIndexRoute: AdminIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
