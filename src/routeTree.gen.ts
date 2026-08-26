@@ -30,7 +30,10 @@ import { Route as AdminGateArtistsRouteImport } from './routes/admin/_gate/artis
 import { Route as AdminGateDashboardRouteImport } from './routes/admin/_gate/dashboard'
 import { Route as AdminGateGalleryRouteImport } from './routes/admin/_gate/gallery'
 import { Route as AdminGateLocationsRouteImport } from './routes/admin/_gate/locations'
+import { Route as AdminGateMessagesRouteImport } from './routes/admin/_gate/messages'
 import { Route as AdminGateProgramRouteImport } from './routes/admin/_gate/program'
+import { Route as AdminGateSettingsRouteImport } from './routes/admin/_gate/settings'
+import { Route as AdminGateSubscribersRouteImport } from './routes/admin/_gate/subscribers'
 import { Route as AdminGateTicketsRouteImport } from './routes/admin/_gate/tickets'
 
 const IndexRoute = IndexRouteImport.update({
@@ -138,9 +141,24 @@ const AdminGateLocationsRoute = AdminGateLocationsRouteImport.update({
   path: '/locations',
   getParentRoute: () => AdminGateRoute,
 } as any)
+const AdminGateMessagesRoute = AdminGateMessagesRouteImport.update({
+  id: '/messages',
+  path: '/messages',
+  getParentRoute: () => AdminGateRoute,
+} as any)
 const AdminGateProgramRoute = AdminGateProgramRouteImport.update({
   id: '/program',
   path: '/program',
+  getParentRoute: () => AdminGateRoute,
+} as any)
+const AdminGateSettingsRoute = AdminGateSettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => AdminGateRoute,
+} as any)
+const AdminGateSubscribersRoute = AdminGateSubscribersRouteImport.update({
+  id: '/subscribers',
+  path: '/subscribers',
   getParentRoute: () => AdminGateRoute,
 } as any)
 const AdminGateTicketsRoute = AdminGateTicketsRouteImport.update({
@@ -171,7 +189,10 @@ export interface FileRoutesByFullPath {
   '/admin/dashboard': typeof AdminGateDashboardRoute
   '/admin/gallery': typeof AdminGateGalleryRoute
   '/admin/locations': typeof AdminGateLocationsRoute
+  '/admin/messages': typeof AdminGateMessagesRoute
   '/admin/program': typeof AdminGateProgramRoute
+  '/admin/settings': typeof AdminGateSettingsRoute
+  '/admin/subscribers': typeof AdminGateSubscribersRoute
   '/admin/tickets': typeof AdminGateTicketsRoute
 }
 export interface FileRoutesByTo {
@@ -195,7 +216,10 @@ export interface FileRoutesByTo {
   '/admin/dashboard': typeof AdminGateDashboardRoute
   '/admin/gallery': typeof AdminGateGalleryRoute
   '/admin/locations': typeof AdminGateLocationsRoute
+  '/admin/messages': typeof AdminGateMessagesRoute
   '/admin/program': typeof AdminGateProgramRoute
+  '/admin/settings': typeof AdminGateSettingsRoute
+  '/admin/subscribers': typeof AdminGateSubscribersRoute
   '/admin/tickets': typeof AdminGateTicketsRoute
 }
 export interface FileRoutesById {
@@ -221,7 +245,10 @@ export interface FileRoutesById {
   '/admin/_gate/dashboard': typeof AdminGateDashboardRoute
   '/admin/_gate/gallery': typeof AdminGateGalleryRoute
   '/admin/_gate/locations': typeof AdminGateLocationsRoute
+  '/admin/_gate/messages': typeof AdminGateMessagesRoute
   '/admin/_gate/program': typeof AdminGateProgramRoute
+  '/admin/_gate/settings': typeof AdminGateSettingsRoute
+  '/admin/_gate/subscribers': typeof AdminGateSubscribersRoute
   '/admin/_gate/tickets': typeof AdminGateTicketsRoute
 }
 export interface FileRouteTypes {
@@ -248,7 +275,10 @@ export interface FileRouteTypes {
     | '/admin/dashboard'
     | '/admin/gallery'
     | '/admin/locations'
+    | '/admin/messages'
     | '/admin/program'
+    | '/admin/settings'
+    | '/admin/subscribers'
     | '/admin/tickets'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -272,7 +302,10 @@ export interface FileRouteTypes {
     | '/admin/dashboard'
     | '/admin/gallery'
     | '/admin/locations'
+    | '/admin/messages'
     | '/admin/program'
+    | '/admin/settings'
+    | '/admin/subscribers'
     | '/admin/tickets'
   id:
     | '__root__'
@@ -297,7 +330,10 @@ export interface FileRouteTypes {
     | '/admin/_gate/dashboard'
     | '/admin/_gate/gallery'
     | '/admin/_gate/locations'
+    | '/admin/_gate/messages'
     | '/admin/_gate/program'
+    | '/admin/_gate/settings'
+    | '/admin/_gate/subscribers'
     | '/admin/_gate/tickets'
   fileRoutesById: FileRoutesById
 }
@@ -469,11 +505,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminGateLocationsRouteImport
       parentRoute: typeof AdminGateRoute
     }
+    '/admin/_gate/messages': {
+      id: '/admin/_gate/messages'
+      path: '/messages'
+      fullPath: '/admin/messages'
+      preLoaderRoute: typeof AdminGateMessagesRouteImport
+      parentRoute: typeof AdminGateRoute
+    }
     '/admin/_gate/program': {
       id: '/admin/_gate/program'
       path: '/program'
       fullPath: '/admin/program'
       preLoaderRoute: typeof AdminGateProgramRouteImport
+      parentRoute: typeof AdminGateRoute
+    }
+    '/admin/_gate/settings': {
+      id: '/admin/_gate/settings'
+      path: '/settings'
+      fullPath: '/admin/settings'
+      preLoaderRoute: typeof AdminGateSettingsRouteImport
+      parentRoute: typeof AdminGateRoute
+    }
+    '/admin/_gate/subscribers': {
+      id: '/admin/_gate/subscribers'
+      path: '/subscribers'
+      fullPath: '/admin/subscribers'
+      preLoaderRoute: typeof AdminGateSubscribersRouteImport
       parentRoute: typeof AdminGateRoute
     }
     '/admin/_gate/tickets': {
@@ -492,7 +549,10 @@ interface AdminGateRouteChildren {
   AdminGateDashboardRoute: typeof AdminGateDashboardRoute
   AdminGateGalleryRoute: typeof AdminGateGalleryRoute
   AdminGateLocationsRoute: typeof AdminGateLocationsRoute
+  AdminGateMessagesRoute: typeof AdminGateMessagesRoute
   AdminGateProgramRoute: typeof AdminGateProgramRoute
+  AdminGateSettingsRoute: typeof AdminGateSettingsRoute
+  AdminGateSubscribersRoute: typeof AdminGateSubscribersRoute
   AdminGateTicketsRoute: typeof AdminGateTicketsRoute
 }
 
@@ -502,7 +562,10 @@ const AdminGateRouteChildren: AdminGateRouteChildren = {
   AdminGateDashboardRoute: AdminGateDashboardRoute,
   AdminGateGalleryRoute: AdminGateGalleryRoute,
   AdminGateLocationsRoute: AdminGateLocationsRoute,
+  AdminGateMessagesRoute: AdminGateMessagesRoute,
   AdminGateProgramRoute: AdminGateProgramRoute,
+  AdminGateSettingsRoute: AdminGateSettingsRoute,
+  AdminGateSubscribersRoute: AdminGateSubscribersRoute,
   AdminGateTicketsRoute: AdminGateTicketsRoute,
 }
 
