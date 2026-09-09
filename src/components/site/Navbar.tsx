@@ -3,6 +3,7 @@ import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 
 import { LanguageToggle } from "./LanguageToggle";
+import { ThemeToggle } from "./ThemeToggle";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/layout/Container";
 import { useI18n } from "@/lib/i18n";
@@ -62,7 +63,8 @@ export function Navbar({ overlay = false }: { overlay?: boolean }) {
           </ul>
 
           <div className="flex items-center gap-2">
-            <div className="hidden sm:block">
+            <div className="hidden items-center gap-2 sm:flex">
+              <ThemeToggle tone="ink" />
               <LanguageToggle tone="ink" />
             </div>
             <Button asChild variant="highlight" size="sm" className="hidden sm:inline-flex">
@@ -101,8 +103,11 @@ export function Navbar({ overlay = false }: { overlay?: boolean }) {
                 ),
               )}
             </ul>
-            <div className="mt-6 flex items-center justify-between">
-              <LanguageToggle tone="ink" />
+            <div className="mt-6 flex flex-wrap items-center justify-between gap-3">
+              <div className="flex items-center gap-2">
+                <ThemeToggle tone="ink" />
+                <LanguageToggle tone="ink" />
+              </div>
               <Button asChild variant="highlight" size="sm">
                 <Link to="/tickets" onClick={() => setOpen(false)}>
                   {t("cta.tickets")}

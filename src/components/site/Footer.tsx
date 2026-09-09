@@ -4,6 +4,7 @@ import { Link } from "@tanstack/react-router";
 import { NewsletterForm } from "./NewsletterForm";
 import { Container } from "@/components/layout/Container";
 import { siteSettingsQuery } from "@/lib/content/queries";
+import { useCookieConsent } from "@/lib/cookie-consent";
 import { useI18n } from "@/lib/i18n";
 import { INFO_NAV, MAIN_NAV, SOCIAL_CHANNELS } from "@/lib/nav";
 
@@ -16,6 +17,7 @@ const SOCIAL_LABEL: Record<(typeof SOCIAL_CHANNELS)[number], string> = {
 
 export function Footer() {
   const { t } = useI18n();
+  const { reopen } = useCookieConsent();
   const { data: settings } = useQuery(siteSettingsQuery());
 
   return (
@@ -108,9 +110,14 @@ export function Footer() {
           <p>
             © {new Date().getFullYear()} {t("brand.name")} {t("brand.suffix")}. {t("footer.rights")}
           </p>
-          <Link to="/admin/login" className="hover:text-highlight">
-            {t("admin.login.title")}
-          </Link>
+          <div className="flex items-center gap-5">
+            <button type="button" onClick={reopen} className="hover:text-highlight">
+              {t("footer.cookieSettings")}
+            </button>
+            <Link to="/admin/login" className="hover:text-highlight">
+              {t("admin.login.title")}
+            </Link>
+          </div>
         </div>
       </Container>
     </footer>

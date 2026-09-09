@@ -12,10 +12,13 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { CookieConsent } from "@/components/site/CookieConsent";
 import { Footer } from "@/components/site/Footer";
 import { Navbar } from "@/components/site/Navbar";
 import { Toaster } from "@/components/ui/sonner";
+import { CookieConsentProvider } from "@/lib/cookie-consent";
 import { I18nProvider, useI18n } from "@/lib/i18n";
+import { ThemeProvider, themeInitScript } from "@/lib/theme";
 
 function NotFoundComponent() {
   return (
@@ -101,6 +104,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
     ],
     scripts: [
+      { children: themeInitScript },
       {
         type: "application/ld+json",
         children: JSON.stringify({
@@ -156,6 +160,7 @@ function SiteChrome() {
         <Outlet />
       </main>
       <Footer />
+      <CookieConsent />
     </div>
   );
 }
@@ -165,10 +170,14 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <I18nProvider>
-        <SiteChrome />
-        <Toaster />
-      </I18nProvider>
+      <ThemeProvider>
+        <I18nProvider>
+          <CookieConsentProvider>
+            <SiteChrome />
+            <Toaster />
+          </CookieConsentProvider>
+        </I18nProvider>
+      </ThemeProvider>
     </QueryClientProvider>
   );
 }

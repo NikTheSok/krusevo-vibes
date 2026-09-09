@@ -150,6 +150,19 @@ const mk = {
   "footer.privacy": "Приватност",
   "footer.cookies": "Колачиња",
   "footer.terms": "Услови",
+  "footer.cookieSettings": "Поставки за колачиња",
+
+  "theme.label": "Тема",
+  "theme.light": "Светла",
+  "theme.dark": "Темна",
+  "theme.system": "Системска",
+
+  "cookies.banner.title": "Користиме колачиња",
+  "cookies.banner.body":
+    "Основните колачиња се потребни за работа на сајтот. Со твоја согласност користиме и колачиња за да разбереме како се користи сајтот.",
+  "cookies.banner.link": "Прочитај ја политиката за колачиња",
+  "cookies.banner.accept": "Прифати",
+  "cookies.banner.decline": "Одбиј",
 
   "state.loading": "Се вчитува…",
   "state.empty.title": "Сè уште нема содржина",
@@ -346,6 +359,19 @@ const en: Record<TranslationKey, string> = {
   "footer.privacy": "Privacy",
   "footer.cookies": "Cookies",
   "footer.terms": "Terms",
+  "footer.cookieSettings": "Cookie settings",
+
+  "theme.label": "Theme",
+  "theme.light": "Light",
+  "theme.dark": "Dark",
+  "theme.system": "System",
+
+  "cookies.banner.title": "We use cookies",
+  "cookies.banner.body":
+    "Essential cookies keep the site working. With your consent we also use cookies to understand how the site is used.",
+  "cookies.banner.link": "Read the cookie policy",
+  "cookies.banner.accept": "Accept",
+  "cookies.banner.decline": "Decline",
 
   "state.loading": "Loading…",
   "state.empty.title": "Nothing here yet",
