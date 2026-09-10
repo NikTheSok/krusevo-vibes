@@ -63,7 +63,7 @@ export function Navbar({ overlay = false }: { overlay?: boolean }) {
           </ul>
 
           <div className="flex items-center gap-2">
-            <div className="hidden items-center gap-2 sm:flex">
+            <div className="flex items-center gap-1 sm:gap-2">
               <ThemeToggle tone="ink" />
               <LanguageToggle tone="ink" />
             </div>
