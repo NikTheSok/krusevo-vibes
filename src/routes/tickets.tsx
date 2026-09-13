@@ -19,13 +19,13 @@ export const Route = createFileRoute("/tickets")({
   },
   head: () => ({
     meta: [
-      { title: "Tickets — VIDIK Festival" },
+      { title: "Tickets — WhenInKrusevo Festival" },
       {
         name: "description",
         content:
-          "Day passes, three-day passes and camping bundles for VIDIK Festival in Krusevo, with prices in MKD.",
+          "Day passes, three-day passes and camping bundles for WhenInKrusevo Festival in Krusevo, with prices in MKD.",
       },
-      { property: "og:title", content: "Tickets — VIDIK Festival" },
+      { property: "og:title", content: "Tickets — WhenInKrusevo Festival" },
       { property: "og:description", content: "Choose your pass for three days on the mountain." },
       { property: "og:url", content: "/tickets" },
     ],

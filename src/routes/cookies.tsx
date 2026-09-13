@@ -7,12 +7,12 @@ export const Route = createFileRoute("/cookies")({
   loader: ({ context }) => context.queryClient.ensureQueryData(pageQuery("cookies")),
   head: () => ({
     meta: [
-      { title: "Cookie policy — VIDIK Festival" },
+      { title: "Cookie policy — WhenInKrusevo Festival" },
       {
         name: "description",
-        content: "Which cookies the VIDIK Festival website uses and how you can control them.",
+        content: "Which cookies the WhenInKrusevo Festival website uses and how you can control them.",
       },
-      { property: "og:title", content: "Cookie policy — VIDIK Festival" },
+      { property: "og:title", content: "Cookie policy — WhenInKrusevo Festival" },
       { property: "og:description", content: "Cookies used on this website." },
       { property: "og:url", content: "/cookies" },
     ],

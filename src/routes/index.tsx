@@ -40,13 +40,13 @@ export const Route = createFileRoute("/")({
   },
   head: () => ({
     meta: [
-      { title: "VIDIK Festival 2027 — Music, mountain and culture in Krusevo" },
+      { title: "WhenInKrusevo Festival 2027 — Music, mountain and culture in Krusevo" },
       {
         name: "description",
         content:
           "Three days of concerts, mountain adventures and local culture at 1350 metres in Krusevo, North Macedonia. Programme, artists, activities and tickets.",
       },
-      { property: "og:title", content: "VIDIK Festival 2027 — Krusevo, North Macedonia" },
+      { property: "og:title", content: "WhenInKrusevo Festival 2027 — Krusevo, North Macedonia" },
       {
         property: "og:description",
         content: "Concerts, trails, workshops and local flavours in the highest town in the Balkans.",

@@ -14,14 +14,14 @@ export const Route = createFileRoute("/about")({
   loader: ({ context }) => context.queryClient.ensureQueryData(festivalQuery()),
   head: () => ({
     meta: [
-      { title: "About the festival — VIDIK" },
+      { title: "About the festival — WhenInKrusevo" },
       {
         name: "description",
         content:
-          "VIDIK is an independent music, mountain and culture festival in Krusevo, built with local hosts, makers and mountaineers.",
+          "WhenInKrusevo is an independent music, mountain and culture festival in Krusevo, built with local hosts, makers and mountaineers.",
       },
-      { property: "og:title", content: "About the festival — VIDIK" },
-      { property: "og:description", content: "How VIDIK is made, and with whom." },
+      { property: "og:title", content: "About the festival — WhenInKrusevo" },
+      { property: "og:description", content: "How WhenInKrusevo is made, and with whom." },
       { property: "og:url", content: "/about" },
     ],
     links: [{ rel: "canonical", href: "/about" }],

@@ -594,6 +594,107 @@ export type Database = {
         }
         Relationships: []
       }
+      ticket_order_items: {
+        Row: {
+          created_at: string
+          id: string
+          order_id: string
+          quantity: number
+          ticket_type_id: string
+          unit_price_mkd: number
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          order_id: string
+          quantity: number
+          ticket_type_id: string
+          unit_price_mkd: number
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          order_id?: string
+          quantity?: number
+          ticket_type_id?: string
+          unit_price_mkd?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "ticket_order_items_order_id_fkey"
+            columns: ["order_id"]
+            isOneToOne: false
+            referencedRelation: "ticket_orders"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "ticket_order_items_ticket_type_id_fkey"
+            columns: ["ticket_type_id"]
+            isOneToOne: false
+            referencedRelation: "ticket_types"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      ticket_orders: {
+        Row: {
+          buyer_email: string
+          buyer_name: string
+          buyer_phone: string | null
+          confirmation_email_sent_at: string | null
+          created_at: string
+          currency: string
+          festival_id: string | null
+          id: string
+          locale: string
+          notes: string | null
+          order_code: string
+          status: Database["public"]["Enums"]["order_status"]
+          total_mkd: number
+          updated_at: string
+        }
+        Insert: {
+          buyer_email: string
+          buyer_name: string
+          buyer_phone?: string | null
+          confirmation_email_sent_at?: string | null
+          created_at?: string
+          currency?: string
+          festival_id?: string | null
+          id?: string
+          locale?: string
+          notes?: string | null
+          order_code: string
+          status?: Database["public"]["Enums"]["order_status"]
+          total_mkd?: number
+          updated_at?: string
+        }
+        Update: {
+          buyer_email?: string
+          buyer_name?: string
+          buyer_phone?: string | null
+          confirmation_email_sent_at?: string | null
+          created_at?: string
+          currency?: string
+          festival_id?: string | null
+          id?: string
+          locale?: string
+          notes?: string | null
+          order_code?: string
+          status?: Database["public"]["Enums"]["order_status"]
+          total_mkd?: number
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "ticket_orders_festival_id_fkey"
+            columns: ["festival_id"]
+            isOneToOne: false
+            referencedRelation: "festivals"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       ticket_types: {
         Row: {
           capacity: number | null
@@ -702,6 +803,7 @@ export type Database = {
     }
     Enums: {
       app_role: "admin" | "editor" | "user"
+      order_status: "pending" | "confirmed" | "cancelled" | "checked_in"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -830,6 +932,7 @@ export const Constants = {
   public: {
     Enums: {
       app_role: ["admin", "editor", "user"],
+      order_status: ["pending", "confirmed", "cancelled", "checked_in"],
     },
   },
 } as const

@@ -15,13 +15,13 @@ export const Route = createFileRoute("/activities")({
   loader: ({ context }) => context.queryClient.ensureQueryData(activitiesQuery()),
   head: () => ({
     meta: [
-      { title: "Activities — VIDIK Festival" },
+      { title: "Activities — WhenInKrusevo Festival" },
       {
         name: "description",
         content:
-          "Paragliding, sunrise hikes, weaving workshops and tasting tours around the VIDIK festival in Krusevo.",
+          "Paragliding, sunrise hikes, weaving workshops and tasting tours around the WhenInKrusevo festival in Krusevo.",
       },
-      { property: "og:title", content: "Activities — VIDIK Festival" },
+      { property: "og:title", content: "Activities — WhenInKrusevo Festival" },
       {
         property: "og:description",
         content: "Mountain, culture and local experiences before and between the concerts.",

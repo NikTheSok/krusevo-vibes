@@ -11,7 +11,7 @@ import { useI18n } from "@/lib/i18n";
 export const Route = createFileRoute("/admin/_gate/subscribers")({
   head: () => ({
     meta: [
-      { title: "Subscribers — VIDIK admin" },
+      { title: "Subscribers — WhenInKrusevo admin" },
       { name: "description", content: "Newsletter subscribers of the festival." },
       { name: "robots", content: "noindex" },
     ],

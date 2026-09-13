@@ -13,13 +13,13 @@ export const Route = createFileRoute("/artists")({
   loader: ({ context }) => context.queryClient.ensureQueryData(artistsQuery()),
   head: () => ({
     meta: [
-      { title: "Artists — VIDIK Festival" },
+      { title: "Artists — WhenInKrusevo Festival" },
       {
         name: "description",
         content:
-          "The VIDIK line-up: voices, rhythms and instruments from the Balkans and beyond, across three stages in Krusevo.",
+          "The WhenInKrusevo line-up: voices, rhythms and instruments from the Balkans and beyond, across three stages in Krusevo.",
       },
-      { property: "og:title", content: "Artists — VIDIK Festival" },
+      { property: "og:title", content: "Artists — WhenInKrusevo Festival" },
       { property: "og:description", content: "Meet the line-up playing the mountain stages." },
       { property: "og:url", content: "/artists" },
     ],

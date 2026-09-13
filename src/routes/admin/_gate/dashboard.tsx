@@ -12,8 +12,8 @@ import { useI18n, type TranslationKey } from "@/lib/i18n";
 export const Route = createFileRoute("/admin/_gate/dashboard")({
   head: () => ({
     meta: [
-      { title: "Dashboard — VIDIK admin" },
-      { name: "description", content: "Content overview for the VIDIK Festival team." },
+      { title: "Dashboard — WhenInKrusevo admin" },
+      { name: "description", content: "Content overview for the WhenInKrusevo Festival team." },
       { name: "robots", content: "noindex" },
     ],
   }),
