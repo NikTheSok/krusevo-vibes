@@ -13,7 +13,7 @@ export const LOCALE_LABELS: Record<Locale, string> = {
 };
 
 const mk = {
-  "brand.name": "VIDIK",
+  "brand.name": "WhenInKrusevo",
   "brand.suffix": "Фестивал",
   "brand.location": "Крушево, Северна Македонија",
 
@@ -57,7 +57,7 @@ const mk = {
   "home.intro.eyebrow": "За фестивалот",
   "home.intro.title": "Музика на 1350 метри, меѓу бор и камен",
   "home.intro.body":
-    "VIDIK се одвива во највисокиот град на Балканот. Три дена концерти на ливадите под Гумење, акустични сетови во старата чаршија, планински авантури наутро и локални вкусови цел ден.",
+    "WhenInKrusevo се одвива во највисокиот град на Балканот. Три дена концерти на ливадите под Гумење, акустични сетови во старата чаршија, планински авантури наутро и локални вкусови цел ден.",
   "home.stats.eyebrow": "Фестивалот во бројки",
   "home.program.eyebrow": "Програма",
   "home.program.title": "Издвоено од програмата",
@@ -98,7 +98,7 @@ const mk = {
   "about.subtitle": "Фестивал за музика, планина и локална култура.",
   "about.mission.title": "Нашата идеја",
   "about.mission.body":
-    "VIDIK е создаден за да покаже дека голем фестивал може да биде и мал по чувство: локална храна, локални домаќини, локални приказни — со меѓународна програма и внимателен однос кон планината.",
+    "WhenInKrusevo е создаден за да покаже дека голем фестивал може да биде и мал по чувство: локална храна, локални домаќини, локални приказни — со меѓународна програма и внимателен однос кон планината.",
   "about.values.sustainability.title": "Одговорно кон планината",
   "about.values.sustainability.body": "Без пластика за еднократна употреба, селекција на отпад и патеки означени со локални планинари.",
   "about.values.community.title": "Со локалната заедница",
@@ -222,7 +222,7 @@ const mk = {
 export type TranslationKey = keyof typeof mk;
 
 const en: Record<TranslationKey, string> = {
-  "brand.name": "VIDIK",
+  "brand.name": "WhenInKrusevo",
   "brand.suffix": "Festival",
   "brand.location": "Krusevo, North Macedonia",
 
@@ -266,7 +266,7 @@ const en: Record<TranslationKey, string> = {
   "home.intro.eyebrow": "About",
   "home.intro.title": "Music at 1350 metres, between pine and stone",
   "home.intro.body":
-    "VIDIK takes place in the highest town in the Balkans. Three days of concerts on the meadows below Gumenje, acoustic sets in the old bazaar, mountain adventures at dawn and local flavours all day long.",
+    "WhenInKrusevo takes place in the highest town in the Balkans. Three days of concerts on the meadows below Gumenje, acoustic sets in the old bazaar, mountain adventures at dawn and local flavours all day long.",
   "home.stats.eyebrow": "The festival in numbers",
   "home.program.eyebrow": "Program",
   "home.program.title": "Programme highlights",
@@ -307,7 +307,7 @@ const en: Record<TranslationKey, string> = {
   "about.subtitle": "A festival for music, mountain and local culture.",
   "about.mission.title": "Our idea",
   "about.mission.body":
-    "VIDIK exists to show that a big festival can still feel small: local food, local hosts, local stories — with an international programme and real care for the mountain.",
+    "WhenInKrusevo exists to show that a big festival can still feel small: local food, local hosts, local stories — with an international programme and real care for the mountain.",
   "about.values.sustainability.title": "Kind to the mountain",
   "about.values.sustainability.body": "No single-use plastic, sorted waste and trails marked by local mountaineers.",
   "about.values.community.title": "With the community",

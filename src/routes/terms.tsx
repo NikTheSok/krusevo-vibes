@@ -7,12 +7,12 @@ export const Route = createFileRoute("/terms")({
   loader: ({ context }) => context.queryClient.ensureQueryData(pageQuery("terms")),
   head: () => ({
     meta: [
-      { title: "Terms and conditions — VIDIK Festival" },
+      { title: "Terms and conditions — WhenInKrusevo Festival" },
       {
         name: "description",
-        content: "Terms of sale and festival rules for visitors of VIDIK Festival in Krusevo.",
+        content: "Terms of sale and festival rules for visitors of WhenInKrusevo Festival in Krusevo.",
       },
-      { property: "og:title", content: "Terms and conditions — VIDIK Festival" },
+      { property: "og:title", content: "Terms and conditions — WhenInKrusevo Festival" },
       { property: "og:description", content: "Ticket terms and festival rules." },
       { property: "og:url", content: "/terms" },
     ],

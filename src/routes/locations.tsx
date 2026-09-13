@@ -13,13 +13,13 @@ export const Route = createFileRoute("/locations")({
   loader: ({ context }) => context.queryClient.ensureQueryData(locationsQuery()),
   head: () => ({
     meta: [
-      { title: "Locations — VIDIK Festival" },
+      { title: "Locations — WhenInKrusevo Festival" },
       {
         name: "description",
         content:
           "Stages and venues across Krusevo: the meadow main stage, the old bazaar, Mechkin Kamen and the sunrise viewpoint.",
       },
-      { property: "og:title", content: "Locations — VIDIK Festival" },
+      { property: "og:title", content: "Locations — WhenInKrusevo Festival" },
       { property: "og:description", content: "Where every part of the festival happens." },
       { property: "og:url", content: "/locations" },
     ],

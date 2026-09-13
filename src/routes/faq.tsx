@@ -18,13 +18,13 @@ export const Route = createFileRoute("/faq")({
   loader: ({ context }) => context.queryClient.ensureQueryData(faqsQuery()),
   head: () => ({
     meta: [
-      { title: "Frequently asked questions — VIDIK Festival" },
+      { title: "Frequently asked questions — WhenInKrusevo Festival" },
       {
         name: "description",
         content:
-          "Answers about tickets, camping, accessibility, transport and what to pack for VIDIK Festival in Krusevo.",
+          "Answers about tickets, camping, accessibility, transport and what to pack for WhenInKrusevo Festival in Krusevo.",
       },
-      { property: "og:title", content: "FAQ — VIDIK Festival" },
+      { property: "og:title", content: "FAQ — WhenInKrusevo Festival" },
       { property: "og:description", content: "Everything practical before you travel to Krusevo." },
       { property: "og:url", content: "/faq" },
     ],

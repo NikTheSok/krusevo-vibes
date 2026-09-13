@@ -83,13 +83,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "VIDIK Festival — Krusevo, North Macedonia" },
+      { title: "WhenInKrusevo Festival — Krusevo, North Macedonia" },
       {
         name: "description",
         content:
-          "VIDIK is a three-day music, mountain and culture festival in Krusevo, the highest town in the Balkans.",
+          "WhenInKrusevo is a three-day music, mountain and culture festival in Krusevo, the highest town in the Balkans.",
       },
-      { property: "og:site_name", content: "VIDIK Festival" },
+      { property: "og:site_name", content: "WhenInKrusevo Festival" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -110,7 +110,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "Organization",
-          name: "VIDIK Festival",
+          name: "WhenInKrusevo Festival",
           address: {
             "@type": "PostalAddress",
             addressLocality: "Krusevo",

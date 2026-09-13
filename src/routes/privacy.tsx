@@ -7,12 +7,12 @@ export const Route = createFileRoute("/privacy")({
   loader: ({ context }) => context.queryClient.ensureQueryData(pageQuery("privacy")),
   head: () => ({
     meta: [
-      { title: "Privacy policy — VIDIK Festival" },
+      { title: "Privacy policy — WhenInKrusevo Festival" },
       {
         name: "description",
-        content: "How VIDIK Festival collects, uses and protects personal data of visitors and subscribers.",
+        content: "How WhenInKrusevo Festival collects, uses and protects personal data of visitors and subscribers.",
       },
-      { property: "og:title", content: "Privacy policy — VIDIK Festival" },
+      { property: "og:title", content: "Privacy policy — WhenInKrusevo Festival" },
       { property: "og:description", content: "Our approach to your personal data." },
       { property: "og:url", content: "/privacy" },
     ],

@@ -12,13 +12,13 @@ export const Route = createFileRoute("/gallery")({
   loader: ({ context }) => context.queryClient.ensureQueryData(galleryQuery()),
   head: () => ({
     meta: [
-      { title: "Gallery — VIDIK Festival" },
+      { title: "Gallery — WhenInKrusevo Festival" },
       {
         name: "description",
         content: "Photographs from the mountain trails, the night stages and the old bazaar of Krusevo.",
       },
-      { property: "og:title", content: "Gallery — VIDIK Festival" },
-      { property: "og:description", content: "The atmosphere of VIDIK in pictures." },
+      { property: "og:title", content: "Gallery — WhenInKrusevo Festival" },
+      { property: "og:description", content: "The atmosphere of WhenInKrusevo in pictures." },
       { property: "og:url", content: "/gallery" },
     ],
     links: [{ rel: "canonical", href: "/gallery" }],

@@ -12,13 +12,13 @@ export const Route = createFileRoute("/contact")({
   loader: ({ context }) => context.queryClient.ensureQueryData(siteSettingsQuery()),
   head: () => ({
     meta: [
-      { title: "Contact — VIDIK Festival" },
+      { title: "Contact — WhenInKrusevo Festival" },
       {
         name: "description",
         content:
-          "Contact the VIDIK Festival team in Krusevo about tickets, accommodation, partnerships or press accreditation.",
+          "Contact the WhenInKrusevo Festival team in Krusevo about tickets, accommodation, partnerships or press accreditation.",
       },
-      { property: "og:title", content: "Contact — VIDIK Festival" },
+      { property: "og:title", content: "Contact — WhenInKrusevo Festival" },
       { property: "og:description", content: "Talk to the festival team." },
       { property: "og:url", content: "/contact" },
     ],

@@ -12,8 +12,8 @@ export const Route = createFileRoute("/admin/login")({
   ssr: false,
   head: () => ({
     meta: [
-      { title: "Team sign in — VIDIK Festival" },
-      { name: "description", content: "Sign in to the VIDIK Festival content administration." },
+      { title: "Team sign in — WhenInKrusevo Festival" },
+      { name: "description", content: "Sign in to the WhenInKrusevo Festival content administration." },
       { name: "robots", content: "noindex" },
     ],
   }),
