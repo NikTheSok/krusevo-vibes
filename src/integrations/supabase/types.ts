@@ -800,13 +800,6 @@ export type Database = {
         Returns: boolean
       }
       is_admin: { Args: never; Returns: boolean }
-      ticket_sold_counts: {
-        Args: never
-        Returns: {
-          sold: number
-          ticket_type_id: string
-        }[]
-      }
     }
     Enums: {
       app_role: "admin" | "editor" | "user"
