@@ -11,6 +11,7 @@ export type NavItem = {
     | "/locations"
     | "/contact"
     | "/tickets"
+    | "/checkout"
     | "/faq"
     | "/privacy"
     | "/cookies"
@@ -47,6 +48,7 @@ export type AdminNavItem = {
     | "/admin/gallery"
     | "/admin/locations"
     | "/admin/tickets"
+    | "/admin/orders"
     | "/admin/messages"
     | "/admin/subscribers"
     | "/admin/settings";
@@ -61,6 +63,7 @@ export const ADMIN_NAV: AdminNavItem[] = [
   { to: "/admin/gallery", labelKey: "admin.nav.gallery" },
   { to: "/admin/locations", labelKey: "admin.nav.locations" },
   { to: "/admin/tickets", labelKey: "admin.nav.tickets" },
+  { to: "/admin/orders", labelKey: "admin.nav.orders" },
   { to: "/admin/messages", labelKey: "admin.nav.messages" },
   { to: "/admin/subscribers", labelKey: "admin.nav.subscribers" },
   { to: "/admin/settings", labelKey: "admin.nav.settings" },

@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as ActivitiesRouteImport } from './routes/activities'
 import { Route as ArtistsRouteImport } from './routes/artists'
+import { Route as CheckoutRouteImport } from './routes/checkout'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CookiesRouteImport } from './routes/cookies'
 import { Route as FaqRouteImport } from './routes/faq'
@@ -54,6 +55,11 @@ const ActivitiesRoute = ActivitiesRouteImport.update({
 const ArtistsRoute = ArtistsRouteImport.update({
   id: '/artists',
   path: '/artists',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CheckoutRoute = CheckoutRouteImport.update({
+  id: '/checkout',
+  path: '/checkout',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactRoute = ContactRouteImport.update({
@@ -172,6 +178,7 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/activities': typeof ActivitiesRoute
   '/artists': typeof ArtistsRoute
+  '/checkout': typeof CheckoutRoute
   '/contact': typeof ContactRoute
   '/cookies': typeof CookiesRoute
   '/faq': typeof FaqRoute
@@ -200,6 +207,7 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/activities': typeof ActivitiesRoute
   '/artists': typeof ArtistsRoute
+  '/checkout': typeof CheckoutRoute
   '/contact': typeof ContactRoute
   '/cookies': typeof CookiesRoute
   '/faq': typeof FaqRoute
@@ -228,6 +236,7 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/activities': typeof ActivitiesRoute
   '/artists': typeof ArtistsRoute
+  '/checkout': typeof CheckoutRoute
   '/contact': typeof ContactRoute
   '/cookies': typeof CookiesRoute
   '/faq': typeof FaqRoute
@@ -258,6 +267,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/activities'
     | '/artists'
+    | '/checkout'
     | '/contact'
     | '/cookies'
     | '/faq'
@@ -286,6 +296,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/activities'
     | '/artists'
+    | '/checkout'
     | '/contact'
     | '/cookies'
     | '/faq'
@@ -313,6 +324,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/activities'
     | '/artists'
+    | '/checkout'
     | '/contact'
     | '/cookies'
     | '/faq'
@@ -342,6 +354,7 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   ActivitiesRoute: typeof ActivitiesRoute
   ArtistsRoute: typeof ArtistsRoute
+  CheckoutRoute: typeof CheckoutRoute
   ContactRoute: typeof ContactRoute
   CookiesRoute: typeof CookiesRoute
   FaqRoute: typeof FaqRoute
@@ -384,6 +397,13 @@ declare module '@tanstack/react-router' {
       path: '/artists'
       fullPath: '/artists'
       preLoaderRoute: typeof ArtistsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/checkout': {
+      id: '/checkout'
+      path: '/checkout'
+      fullPath: '/checkout'
+      preLoaderRoute: typeof CheckoutRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact': {
@@ -578,6 +598,7 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   ActivitiesRoute: ActivitiesRoute,
   ArtistsRoute: ArtistsRoute,
+  CheckoutRoute: CheckoutRoute,
   ContactRoute: ContactRoute,
   CookiesRoute: CookiesRoute,
   FaqRoute: FaqRoute,
