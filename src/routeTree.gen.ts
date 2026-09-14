@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as ActivitiesRouteImport } from './routes/activities'
 import { Route as ArtistsRouteImport } from './routes/artists'
+import { Route as CheckoutRouteImport } from './routes/checkout'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CookiesRouteImport } from './routes/cookies'
 import { Route as FaqRouteImport } from './routes/faq'
@@ -25,6 +26,7 @@ import { Route as TicketsRouteImport } from './routes/tickets'
 import { Route as AdminIndexRouteImport } from './routes/admin/index'
 import { Route as AdminGateRouteImport } from './routes/admin/_gate'
 import { Route as AdminLoginRouteImport } from './routes/admin/login'
+import { Route as OrderCodeRouteImport } from './routes/order.$code'
 import { Route as AdminGateActivitiesRouteImport } from './routes/admin/_gate/activities'
 import { Route as AdminGateArtistsRouteImport } from './routes/admin/_gate/artists'
 import { Route as AdminGateDashboardRouteImport } from './routes/admin/_gate/dashboard'
@@ -54,6 +56,11 @@ const ActivitiesRoute = ActivitiesRouteImport.update({
 const ArtistsRoute = ArtistsRouteImport.update({
   id: '/artists',
   path: '/artists',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CheckoutRoute = CheckoutRouteImport.update({
+  id: '/checkout',
+  path: '/checkout',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactRoute = ContactRouteImport.update({
@@ -116,6 +123,11 @@ const AdminLoginRoute = AdminLoginRouteImport.update({
   path: '/admin/login',
   getParentRoute: () => rootRouteImport,
 } as any)
+const OrderCodeRoute = OrderCodeRouteImport.update({
+  id: '/order/$code',
+  path: '/order/$code',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AdminGateActivitiesRoute = AdminGateActivitiesRouteImport.update({
   id: '/activities',
   path: '/activities',
@@ -172,6 +184,7 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/activities': typeof ActivitiesRoute
   '/artists': typeof ArtistsRoute
+  '/checkout': typeof CheckoutRoute
   '/contact': typeof ContactRoute
   '/cookies': typeof CookiesRoute
   '/faq': typeof FaqRoute
@@ -183,6 +196,7 @@ export interface FileRoutesByFullPath {
   '/tickets': typeof TicketsRoute
   '/admin': typeof AdminGateRouteWithChildren
   '/admin/login': typeof AdminLoginRoute
+  '/order/$code': typeof OrderCodeRoute
   '/admin/': typeof AdminIndexRoute
   '/admin/activities': typeof AdminGateActivitiesRoute
   '/admin/artists': typeof AdminGateArtistsRoute
@@ -200,6 +214,7 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/activities': typeof ActivitiesRoute
   '/artists': typeof ArtistsRoute
+  '/checkout': typeof CheckoutRoute
   '/contact': typeof ContactRoute
   '/cookies': typeof CookiesRoute
   '/faq': typeof FaqRoute
@@ -211,6 +226,7 @@ export interface FileRoutesByTo {
   '/tickets': typeof TicketsRoute
   '/admin': typeof AdminIndexRoute
   '/admin/login': typeof AdminLoginRoute
+  '/order/$code': typeof OrderCodeRoute
   '/admin/activities': typeof AdminGateActivitiesRoute
   '/admin/artists': typeof AdminGateArtistsRoute
   '/admin/dashboard': typeof AdminGateDashboardRoute
@@ -228,6 +244,7 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/activities': typeof ActivitiesRoute
   '/artists': typeof ArtistsRoute
+  '/checkout': typeof CheckoutRoute
   '/contact': typeof ContactRoute
   '/cookies': typeof CookiesRoute
   '/faq': typeof FaqRoute
@@ -239,6 +256,7 @@ export interface FileRoutesById {
   '/tickets': typeof TicketsRoute
   '/admin/_gate': typeof AdminGateRouteWithChildren
   '/admin/login': typeof AdminLoginRoute
+  '/order/$code': typeof OrderCodeRoute
   '/admin/': typeof AdminIndexRoute
   '/admin/_gate/activities': typeof AdminGateActivitiesRoute
   '/admin/_gate/artists': typeof AdminGateArtistsRoute
@@ -258,6 +276,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/activities'
     | '/artists'
+    | '/checkout'
     | '/contact'
     | '/cookies'
     | '/faq'
@@ -269,6 +288,7 @@ export interface FileRouteTypes {
     | '/tickets'
     | '/admin'
     | '/admin/login'
+    | '/order/$code'
     | '/admin/'
     | '/admin/activities'
     | '/admin/artists'
@@ -286,6 +306,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/activities'
     | '/artists'
+    | '/checkout'
     | '/contact'
     | '/cookies'
     | '/faq'
@@ -297,6 +318,7 @@ export interface FileRouteTypes {
     | '/tickets'
     | '/admin'
     | '/admin/login'
+    | '/order/$code'
     | '/admin/activities'
     | '/admin/artists'
     | '/admin/dashboard'
@@ -313,6 +335,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/activities'
     | '/artists'
+    | '/checkout'
     | '/contact'
     | '/cookies'
     | '/faq'
@@ -324,6 +347,7 @@ export interface FileRouteTypes {
     | '/tickets'
     | '/admin/_gate'
     | '/admin/login'
+    | '/order/$code'
     | '/admin/'
     | '/admin/_gate/activities'
     | '/admin/_gate/artists'
@@ -342,6 +366,7 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   ActivitiesRoute: typeof ActivitiesRoute
   ArtistsRoute: typeof ArtistsRoute
+  CheckoutRoute: typeof CheckoutRoute
   ContactRoute: typeof ContactRoute
   CookiesRoute: typeof CookiesRoute
   FaqRoute: typeof FaqRoute
@@ -353,6 +378,7 @@ export interface RootRouteChildren {
   TicketsRoute: typeof TicketsRoute
   AdminGateRoute: typeof AdminGateRouteWithChildren
   AdminLoginRoute: typeof AdminLoginRoute
+  OrderCodeRoute: typeof OrderCodeRoute
   AdminIndexRoute: typeof AdminIndexRoute
 }
 
@@ -384,6 +410,13 @@ declare module '@tanstack/react-router' {
       path: '/artists'
       fullPath: '/artists'
       preLoaderRoute: typeof ArtistsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/checkout': {
+      id: '/checkout'
+      path: '/checkout'
+      fullPath: '/checkout'
+      preLoaderRoute: typeof CheckoutRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact': {
@@ -468,6 +501,13 @@ declare module '@tanstack/react-router' {
       path: '/admin/login'
       fullPath: '/admin/login'
       preLoaderRoute: typeof AdminLoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/order/$code': {
+      id: '/order/$code'
+      path: '/order/$code'
+      fullPath: '/order/$code'
+      preLoaderRoute: typeof OrderCodeRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/admin/_gate/activities': {
@@ -578,6 +618,7 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   ActivitiesRoute: ActivitiesRoute,
   ArtistsRoute: ArtistsRoute,
+  CheckoutRoute: CheckoutRoute,
   ContactRoute: ContactRoute,
   CookiesRoute: CookiesRoute,
   FaqRoute: FaqRoute,
@@ -589,6 +630,7 @@ const rootRouteChildren: RootRouteChildren = {
   TicketsRoute: TicketsRoute,
   AdminGateRoute: AdminGateRouteWithChildren,
   AdminLoginRoute: AdminLoginRoute,
+  OrderCodeRoute: OrderCodeRoute,
   AdminIndexRoute: AdminIndexRoute,
 }
 export const routeTree = rootRouteImport

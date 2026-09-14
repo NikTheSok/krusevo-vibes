@@ -13,6 +13,7 @@ import {
   listAdminSubscribers,
   listAdminTickets,
 } from "./admin.functions";
+import { listAdminOrders } from "./orders-admin.functions";
 
 const key = (...parts: string[]) => ["admin", ...parts];
 
@@ -48,3 +49,6 @@ export const adminSubscribersQuery = () =>
 
 export const adminSettingsQuery = () =>
   queryOptions({ queryKey: key("settings"), queryFn: () => getAdminSettings() });
+
+export const adminOrdersQuery = () =>
+  queryOptions({ queryKey: key("orders"), queryFn: () => listAdminOrders() });

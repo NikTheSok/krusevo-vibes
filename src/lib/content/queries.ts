@@ -13,6 +13,7 @@ import {
   getSponsors,
   getTicketTypes,
 } from "./public.functions";
+import { getOrderByCode, getTicketAvailability } from "./orders.functions";
 
 export const festivalQuery = () =>
   queryOptions({ queryKey: ["festival"], queryFn: () => getFestival() });
@@ -41,3 +42,9 @@ export const siteSettingsQuery = () =>
 
 export const pageQuery = (slug: string) =>
   queryOptions({ queryKey: ["page", slug], queryFn: () => getPage({ data: { slug } }) });
+
+export const ticketAvailabilityQuery = () =>
+  queryOptions({ queryKey: ["ticket-availability"], queryFn: () => getTicketAvailability() });
+
+export const orderQuery = (code: string) =>
+  queryOptions({ queryKey: ["order", code], queryFn: () => getOrderByCode({ data: { code } }) });
