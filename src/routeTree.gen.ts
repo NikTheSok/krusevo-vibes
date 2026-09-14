@@ -26,6 +26,7 @@ import { Route as TicketsRouteImport } from './routes/tickets'
 import { Route as AdminIndexRouteImport } from './routes/admin/index'
 import { Route as AdminGateRouteImport } from './routes/admin/_gate'
 import { Route as AdminLoginRouteImport } from './routes/admin/login'
+import { Route as OrderCodeRouteImport } from './routes/order.$code'
 import { Route as AdminGateActivitiesRouteImport } from './routes/admin/_gate/activities'
 import { Route as AdminGateArtistsRouteImport } from './routes/admin/_gate/artists'
 import { Route as AdminGateDashboardRouteImport } from './routes/admin/_gate/dashboard'
@@ -122,6 +123,11 @@ const AdminLoginRoute = AdminLoginRouteImport.update({
   path: '/admin/login',
   getParentRoute: () => rootRouteImport,
 } as any)
+const OrderCodeRoute = OrderCodeRouteImport.update({
+  id: '/order/$code',
+  path: '/order/$code',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AdminGateActivitiesRoute = AdminGateActivitiesRouteImport.update({
   id: '/activities',
   path: '/activities',
@@ -190,6 +196,7 @@ export interface FileRoutesByFullPath {
   '/tickets': typeof TicketsRoute
   '/admin': typeof AdminGateRouteWithChildren
   '/admin/login': typeof AdminLoginRoute
+  '/order/$code': typeof OrderCodeRoute
   '/admin/': typeof AdminIndexRoute
   '/admin/activities': typeof AdminGateActivitiesRoute
   '/admin/artists': typeof AdminGateArtistsRoute
@@ -219,6 +226,7 @@ export interface FileRoutesByTo {
   '/tickets': typeof TicketsRoute
   '/admin': typeof AdminIndexRoute
   '/admin/login': typeof AdminLoginRoute
+  '/order/$code': typeof OrderCodeRoute
   '/admin/activities': typeof AdminGateActivitiesRoute
   '/admin/artists': typeof AdminGateArtistsRoute
   '/admin/dashboard': typeof AdminGateDashboardRoute
@@ -248,6 +256,7 @@ export interface FileRoutesById {
   '/tickets': typeof TicketsRoute
   '/admin/_gate': typeof AdminGateRouteWithChildren
   '/admin/login': typeof AdminLoginRoute
+  '/order/$code': typeof OrderCodeRoute
   '/admin/': typeof AdminIndexRoute
   '/admin/_gate/activities': typeof AdminGateActivitiesRoute
   '/admin/_gate/artists': typeof AdminGateArtistsRoute
@@ -279,6 +288,7 @@ export interface FileRouteTypes {
     | '/tickets'
     | '/admin'
     | '/admin/login'
+    | '/order/$code'
     | '/admin/'
     | '/admin/activities'
     | '/admin/artists'
@@ -308,6 +318,7 @@ export interface FileRouteTypes {
     | '/tickets'
     | '/admin'
     | '/admin/login'
+    | '/order/$code'
     | '/admin/activities'
     | '/admin/artists'
     | '/admin/dashboard'
@@ -336,6 +347,7 @@ export interface FileRouteTypes {
     | '/tickets'
     | '/admin/_gate'
     | '/admin/login'
+    | '/order/$code'
     | '/admin/'
     | '/admin/_gate/activities'
     | '/admin/_gate/artists'
@@ -366,6 +378,7 @@ export interface RootRouteChildren {
   TicketsRoute: typeof TicketsRoute
   AdminGateRoute: typeof AdminGateRouteWithChildren
   AdminLoginRoute: typeof AdminLoginRoute
+  OrderCodeRoute: typeof OrderCodeRoute
   AdminIndexRoute: typeof AdminIndexRoute
 }
 
@@ -490,6 +503,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminLoginRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/order/$code': {
+      id: '/order/$code'
+      path: '/order/$code'
+      fullPath: '/order/$code'
+      preLoaderRoute: typeof OrderCodeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/admin/_gate/activities': {
       id: '/admin/_gate/activities'
       path: '/activities'
@@ -610,6 +630,7 @@ const rootRouteChildren: RootRouteChildren = {
   TicketsRoute: TicketsRoute,
   AdminGateRoute: AdminGateRouteWithChildren,
   AdminLoginRoute: AdminLoginRoute,
+  OrderCodeRoute: OrderCodeRoute,
   AdminIndexRoute: AdminIndexRoute,
 }
 export const routeTree = rootRouteImport
