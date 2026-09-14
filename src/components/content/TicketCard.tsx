@@ -1,3 +1,4 @@
+import { Link } from "@tanstack/react-router";
 import { Check } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
@@ -7,9 +8,16 @@ import { formatPrice } from "@/lib/format";
 import { useI18n } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
 
-export function TicketCard({ ticket }: { ticket: TicketType }) {
+export function TicketCard({
+  ticket,
+  remaining,
+}: {
+  ticket: TicketType;
+  remaining?: number | null;
+}) {
   const { locale, pick, t } = useI18n();
   const perks = (locale === "mk" ? ticket.perks_mk : ticket.perks_en) ?? [];
+  const soldOut = !ticket.is_available || remaining === 0;
 
   return (
     <article
@@ -20,7 +28,7 @@ export function TicketCard({ ticket }: { ticket: TicketType }) {
     >
       <div className="flex items-start justify-between gap-3">
         <h3 className="text-title">{pick(ticket.name_mk, ticket.name_en)}</h3>
-        {!ticket.is_available ? <Badge variant="destructive">{t("tickets.soldout")}</Badge> : null}
+        {soldOut ? <Badge variant="destructive">{t("tickets.soldout")}</Badge> : null}
       </div>
 
       <p className="mt-4 font-display text-4xl font-bold">
@@ -47,15 +55,27 @@ export function TicketCard({ ticket }: { ticket: TicketType }) {
 
       <div className="mt-8 flex-1" />
 
-      {ticket.capacity ? (
+      {typeof remaining === "number" && remaining > 0 ? (
+        <p className="mb-4 text-sm text-muted-foreground">
+          {remaining} {t("tickets.left")}
+        </p>
+      ) : ticket.capacity ? (
         <p className="mb-4 text-sm text-muted-foreground">
           {t("tickets.capacity")}: {ticket.capacity}
         </p>
       ) : null}
 
-      <Button variant={ticket.is_featured ? "highlight" : "default"} disabled={!ticket.is_available}>
-        {ticket.is_available ? t("tickets.select") : t("tickets.soldout")}
-      </Button>
+      {soldOut ? (
+        <Button variant="default" disabled>
+          {t("tickets.soldout")}
+        </Button>
+      ) : (
+        <Button asChild variant={ticket.is_featured ? "highlight" : "default"}>
+          <Link to="/checkout" search={{ pass: ticket.slug }}>
+            {t("tickets.buy")}
+          </Link>
+        </Button>
+      )}
     </article>
   );
 }
