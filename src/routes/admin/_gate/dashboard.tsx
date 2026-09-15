@@ -29,6 +29,8 @@ const COUNTS: { key: keyof AdminOverview["counts"]; labelKey: TranslationKey }[]
   { key: "tickets", labelKey: "admin.nav.tickets" },
   { key: "messages", labelKey: "admin.nav.messages" },
   { key: "subscribers", labelKey: "admin.nav.subscribers" },
+  { key: "orders", labelKey: "admin.orders.stats.orders" },
+  { key: "ticketsSold", labelKey: "admin.orders.stats.sold" },
 ];
 
 function AdminDashboard() {
