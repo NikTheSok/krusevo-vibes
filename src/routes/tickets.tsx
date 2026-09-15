@@ -7,7 +7,7 @@ import { Reveal } from "@/components/layout/Reveal";
 import { Section } from "@/components/layout/Section";
 import { SectionHeading } from "@/components/layout/SectionHeading";
 import { PageHero } from "@/components/site/PageHero";
-import { faqsQuery, ticketTypesQuery } from "@/lib/content/queries";
+import { faqsQuery, ticketAvailabilityQuery, ticketTypesQuery } from "@/lib/content/queries";
 import { useI18n } from "@/lib/i18n";
 
 export const Route = createFileRoute("/tickets")({
@@ -15,6 +15,7 @@ export const Route = createFileRoute("/tickets")({
     await Promise.all([
       context.queryClient.ensureQueryData(ticketTypesQuery()),
       context.queryClient.ensureQueryData(faqsQuery()),
+      context.queryClient.ensureQueryData(ticketAvailabilityQuery()),
     ]);
   },
   head: () => ({
@@ -38,6 +39,8 @@ function TicketsPage() {
   const { t, pick } = useI18n();
   const { data: tickets } = useSuspenseQuery(ticketTypesQuery());
   const { data: faqs } = useSuspenseQuery(faqsQuery());
+  const { data: availability } = useSuspenseQuery(ticketAvailabilityQuery());
+  const remainingById = new Map(availability.map((row) => [row.ticket_type_id, row.remaining]));
   const ticketFaqs = faqs.filter((faq) => faq.category === "tickets").slice(0, 4);
 
   return (
@@ -54,7 +57,7 @@ function TicketsPage() {
           <div className="grid gap-6 lg:grid-cols-3">
             {tickets.map((ticket, index) => (
               <Reveal key={ticket.id} delay={index * 60}>
-                <TicketCard ticket={ticket} />
+                <TicketCard ticket={ticket} remaining={remainingById.get(ticket.id) ?? null} />
               </Reveal>
             ))}
           </div>
