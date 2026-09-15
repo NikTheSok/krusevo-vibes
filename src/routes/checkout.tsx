@@ -14,12 +14,13 @@ import { ticketAvailabilityQuery, ticketTypesQuery } from "@/lib/content/queries
 import { formatPrice } from "@/lib/format";
 import { useI18n } from "@/lib/i18n";
 
-type Search = { pass?: string };
+type Search = { pass?: string | undefined };
 
 export const Route = createFileRoute("/checkout")({
   validateSearch: (search: Record<string, unknown>): Search => ({
     pass: typeof search["pass"] === "string" ? search["pass"] : undefined,
   }),
+
   loader: async ({ context }) => {
     await Promise.all([
       context.queryClient.ensureQueryData(ticketTypesQuery()),
