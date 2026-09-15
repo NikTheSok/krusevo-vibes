@@ -25,6 +25,9 @@ export type AdminOverview = {
     messages: number;
     newMessages: number;
     subscribers: number;
+    orders: number;
+    ticketsSold: number;
+    revenue: number;
   };
   recentMessages: ContactMessage[];
   upcomingEvents: AdminEventRow[];
@@ -71,6 +74,18 @@ export const getAdminOverview = createServerFn({ method: "GET" })
       .select("*", { count: "exact", head: true })
       .eq("status", "new");
 
+    const { data: orderRows, error: ordersError } = await supabase
+      .from("ticket_orders")
+      .select("total_mkd, status, items:ticket_order_items(quantity)")
+      .neq("status", "cancelled");
+    if (ordersError) throw new Error(ordersError.message);
+
+    const ticketsSold = (orderRows ?? []).reduce(
+      (sum, order) => sum + (order.items ?? []).reduce((n, item) => n + item.quantity, 0),
+      0,
+    );
+    const revenue = (orderRows ?? []).reduce((sum, order) => sum + Number(order.total_mkd), 0);
+
     const { data: recentMessages, error: messagesError } = await supabase
       .from("contact_messages")
       .select("*")
@@ -97,6 +112,9 @@ export const getAdminOverview = createServerFn({ method: "GET" })
         messages,
         newMessages: newMessages ?? 0,
         subscribers,
+        orders: (orderRows ?? []).length,
+        ticketsSold,
+        revenue,
       },
       recentMessages: recentMessages ?? [],
       upcomingEvents: upcomingEvents ?? [],
