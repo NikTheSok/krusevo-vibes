@@ -13,7 +13,7 @@ import { Section } from "@/components/layout/Section";
 import { SectionHeading } from "@/components/layout/SectionHeading";
 import { Countdown } from "@/components/site/Countdown";
 import { NewsletterForm } from "@/components/site/NewsletterForm";
-import { EmptyState } from "@/components/feedback/States";
+import { EmptyState, ErrorState } from "@/components/feedback/States";
 import { Button } from "@/components/ui/button";
 import {
   activitiesQuery,
@@ -56,6 +56,7 @@ export const Route = createFileRoute("/")({
     links: [{ rel: "canonical", href: "/" }],
   }),
   component: HomePage,
+  errorComponent: () => <ErrorState className="mx-auto my-32 max-w-xl" />,
 });
 
 function HomePage() {
