@@ -1,0 +1,6 @@
+UPDATE public.artists SET name = 'SLATKARISTIKA', genre = 'Hip Hop', bio_mk = 'Повеќе од 10 години на македонската естрада.' WHERE id = '31111111-1111-4111-8111-111111111111';
+UPDATE public.artists SET name = 'Nokaut', country = 'Северна Македонија', genre = 'Rock and Roll', bio_mk = 'Бендот со најубавите и безвременски хитови. Музика што ја сакаат сите и која никогаш не застарува.' WHERE id = '31111111-1111-4111-8111-111111111112';
+UPDATE public.artists SET name = 'Фолтин Бенд', genre = 'Progressive-Traditional', stage = 'Летна Сцена', bio_mk = 'Врвни музичари, токму за оние кои сакаат да навлезат подлабоко во музиката.' WHERE id = '31111111-1111-4111-8111-111111111113';
+UPDATE public.artists SET genre = 'Funk', stage = 'Летна Сцена', bio_mk = 'Неочекувана комбинација на звукови и жанрови.... Ќе бидете воодушевени.' WHERE id = '31111111-1111-4111-8111-111111111114';
+UPDATE public.artists SET name = 'Duper', genre = 'Pop', bio_mk = 'Бендот кој во последно полека но сигурно ја освојува сцената. Сега и во нашиот град.' WHERE id = '31111111-1111-4111-8111-111111111115';
+UPDATE public.artists SET name = 'Matej Foltz', genre = 'Hip Hop-Pop', bio_mk = 'Матеј ќе го затвори настанот со неговата уникатна енергија и ќе направи да барате уште.' WHERE id = '31111111-1111-4111-8111-111111111116';
