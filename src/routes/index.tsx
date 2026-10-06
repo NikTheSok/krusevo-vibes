@@ -222,7 +222,7 @@ function HomePage() {
           <Reveal className="overflow-hidden rounded-3xl">
             <img
               src={destinationAsset.url}
-              alt={locale === "mk" ? "Панорама на Крушево со црква, зеленило и околните планини" : "Panorama of Krusevo with a church, greenery and surrounding mountains"}
+              alt={locale === "mk" ? "Панорама на Крушево со Макиедониум над црвените покриви" : "Panorama of Krusevo with the Makedonium monument above the red rooftops"}
               loading="lazy"
               className="aspect-[4/3] w-full object-cover"
             />
