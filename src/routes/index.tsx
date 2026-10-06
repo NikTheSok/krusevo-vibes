@@ -1,6 +1,7 @@
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { Link, createFileRoute } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
+import destinationAsset from "@/assets/krushevo.jpg.asset.json";
 
 import { ActivityCard } from "@/components/content/ActivityCard";
 import { ArtistCard } from "@/components/content/ArtistCard";
@@ -52,6 +53,8 @@ export const Route = createFileRoute("/")({
         content: "Concerts, trails, workshops and local flavours in the highest town in the Balkans.",
       },
       { property: "og:url", content: "/" },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [{ rel: "canonical", href: "/" }],
   }),
@@ -218,8 +221,8 @@ function HomePage() {
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
           <Reveal className="overflow-hidden rounded-3xl">
             <img
-              src="/images/town.jpg"
-              alt="Stone and timber houses on the slopes of Krusevo"
+              src={destinationAsset.url}
+              alt={locale === "mk" ? "Панорама на Крушево со црква, зеленило и околните планини" : "Panorama of Krusevo with a church, greenery and surrounding mountains"}
               loading="lazy"
               className="aspect-[4/3] w-full object-cover"
             />

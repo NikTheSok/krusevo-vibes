@@ -28,6 +28,8 @@ export const Route = createFileRoute("/program")({
         content: "Three festival days of concerts, workshops and cultural events.",
       },
       { property: "og:url", content: "/program" },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [{ rel: "canonical", href: "/program" }],
   }),
