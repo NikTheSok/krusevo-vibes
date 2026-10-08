@@ -1,5 +1,8 @@
-version: '1'
-
-endpoints:
-  - name: web
-    target: web:3000
+version: 1
+ingress:
+  - name: app
+    service: web
+    port: 3000
+    primary: true
+    access:
+      type: public
