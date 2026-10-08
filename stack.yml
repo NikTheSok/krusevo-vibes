@@ -1,0 +1,5 @@
+version: '1'
+
+endpoints:
+  - name: web
+    target: web:3000
