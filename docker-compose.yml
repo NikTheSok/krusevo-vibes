@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    cpus: '0.5'
+    mem_limit: 512m
+    environment:
+      - PORT=3000
+      - DATABASE_URL=postgresql://postgres:postgres@db:5432/krusevodb
+
+  db:
+    image: postgres:15-alpine
+    cpus: '0.5'
+    mem_limit: 512m
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=krusevodb
