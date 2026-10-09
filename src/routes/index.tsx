@@ -221,8 +221,8 @@ function HomePage() {
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
           <Reveal className="overflow-hidden rounded-3xl">
             <img
-              src={destinationAsset.url}
-              alt={locale === "mk" ? "Панорама на Крушево со Макиедониум над црвените покриви" : "Panorama of Krusevo with the Makedonium monument above the red rooftops"}
+              src="/images/hero_krusevo.jpg"
+              alt={"Krusevo"}
               loading="lazy"
               className="aspect-[4/3] w-full object-cover"
             />
