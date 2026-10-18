@@ -185,6 +185,11 @@ const mk = {
   "admin.orders.stats.sold": "Продадени билети",
   "admin.orders.stats.revenue": "Приход",
 
+  "admin.activities.edit": "Уреди активност",
+  "admin.activities.hours": "Часови",
+  "admin.activities.minutes": "Минути",
+  "admin.activities.priceHint": "0 = бесплатно.",
+  "admin.activities.saved": "Активноста е зачувана.",
   "admin.tickets.edit": "Уреди билет",
   "admin.tickets.perksHint": "Една придобивка по ред.",
   "admin.tickets.capacityHint": "Остави празно за неограничено.",
@@ -459,6 +464,11 @@ const en: Record<TranslationKey, string> = {
   "admin.orders.stats.sold": "Tickets sold",
   "admin.orders.stats.revenue": "Revenue",
 
+  "admin.activities.edit": "Edit activity",
+  "admin.activities.hours": "Hours",
+  "admin.activities.minutes": "Minutes",
+  "admin.activities.priceHint": "0 = free.",
+  "admin.activities.saved": "Activity saved.",
   "admin.tickets.edit": "Edit pass",
   "admin.tickets.perksHint": "One perk per line.",
   "admin.tickets.capacityHint": "Leave empty for unlimited.",
