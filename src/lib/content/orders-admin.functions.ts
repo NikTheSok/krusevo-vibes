@@ -181,3 +181,42 @@ export const updateTicketType = createServerFn({ method: "POST" })
     if (error) throw new Error(error.message);
     return row;
   });
+
+const activityPatch = z.object({
+  id: z.string().uuid(),
+  title_mk: z.string().trim().min(1).max(160),
+  title_en: z.string().trim().min(1).max(160),
+  description_mk: z.string().trim().max(1000).optional().default(""),
+  description_en: z.string().trim().max(1000).optional().default(""),
+  category: z.string().trim().max(80).optional().default(""),
+  difficulty: z.string().trim().max(80).optional().default(""),
+  price_mkd: z.number().min(0).max(1000000),
+  duration_minutes: z.number().int().min(0).max(100000).nullable(),
+  capacity: z.number().int().min(0).max(1000000).nullable(),
+  is_published: z.boolean(),
+  is_featured: z.boolean(),
+});
+
+export type ActivityPatch = z.input<typeof activityPatch>;
+
+/** Lets staff edit activity details, price and duration. */
+export const updateActivity = createServerFn({ method: "POST" })
+  .middleware([requireSupabaseAuth])
+  .inputValidator((input: ActivityPatch) => activityPatch.parse(input))
+  .handler(async ({ data, context }) => {
+    const { id, ...patch } = data;
+    const { data: row, error } = await context.supabase
+      .from("activities")
+      .update({
+        ...patch,
+        description_mk: patch.description_mk || null,
+        description_en: patch.description_en || null,
+        category: patch.category || null,
+        difficulty: patch.difficulty || null,
+      })
+      .eq("id", id)
+      .select("*")
+      .single();
+    if (error) throw new Error(error.message);
+    return row;
+  });
